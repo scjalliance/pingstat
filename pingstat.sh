@@ -69,7 +69,7 @@ RTT=$(sed -n 's/.*=\s*\([0-9\./][0-9\./]*\)\s*.*/\1/p' <<<"$STAT")
 RTTMIN=$(cut -d/ -f1 <<<"$RTT")
 RTTAVG=$(cut -d/ -f2 <<<"$RTT")
 RTTMAX=$(cut -d/ -f3 <<<"$RTT")
-RTTUNIT=$(sed -n 's/.* \(\(ns\)*\(ms\)*\(s\(ec\)*\)*\(m\(in\)*\)*\)$/\1/p' <<<"$STAT")
+RTTUNIT=$(sed -n 's/.* \(\(ns\)*\(ms\)*\(s\(ec\)*\)*\(m\(in\)*\)*\)\(,.*\)*$/\1/p' <<<"$STAT")
 
 if [ "$RTTUNIT" = "ns" ]; then
 	RTTMIN=0
